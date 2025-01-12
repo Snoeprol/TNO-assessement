@@ -8,6 +8,7 @@
 
 1. Navigeer naar de single-file-solution directory:
 
+`cd TNO-assessement`
 `cd single-file-solution`
 
 2. Compileer het Java bestand:
@@ -18,11 +19,11 @@
 
 `java PatriotSimulation 0`
 
-voor interpretatio 0, zie Interpretatie (0).
+voor interpretatie 0, zie Interpretatie (0).
 
 `java PatriotSimulation 1`
 
-voor interpretatio 1, zie Interpretatie (1).
+voor interpretatie 1, zie Interpretatie (1).
 
 ## Interpretatie (0)
 
@@ -30,12 +31,13 @@ Deze methode analyseert elke radar-outputwaarde afzonderlijk door het laatste ci
 
 Voor elke radaruitlezing (gesplitst op basis van ;) in de array:
 
-Als de waarde eindigt op '1', wordt deze geteld als een oneven signaal
+Als de waarde eindigt op '1', wordt deze geteld als een oneven signaal (oneven getail in binaire notatie)
 Als de waarde eindigt op '0', wordt deze geteld als een even signaal
 
 ```
 Voorbeeld:
-CopyInvoer: ["1001", "1011", "1010"]
+Invoer: ["1001", "1011", "1010"]
+Interpretatie in decimaal:  [9, 11, 10]
 Analyse:
 - "1001" eindigt op 1 → oneven telling +1
 - "1011" eindigt op 1 → oneven telling +1
@@ -77,7 +79,7 @@ De simulatie output wordt getoond in de terminal, met:
 Dit programma simuleert een Patriot raketafweersysteem dat:
 - Radar data leest vanuit een CSV bestand
 - De data interpreteert om potentiële dreigingen te detecteren
-- Onderscheppingsraketten lanceert wanneer dreigingen worden gedetecteerd
+- Raket lanceert wanneer dreigingen worden gedetecteerd
 - Hit/miss kans simuleert gebaseerd op een PK ratio van 0,8
 
 ## Vereisten
