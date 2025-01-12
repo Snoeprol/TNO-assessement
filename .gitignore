@@ -1,0 +1,5 @@
+# No compiled java files
+*.class
+
+# No .idea directory
+.idea/
