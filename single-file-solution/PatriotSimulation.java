@@ -9,9 +9,24 @@ public class PatriotSimulation {
     private static final String RADAR_DATA_FILE = "./data/radar_data.csv";
     private static final double PK_RATIO = 0.8;
     private static final int SIMULATION_STEPS = 20;
-    private static final int INTERPRETATION = 0;
 
     public static void main(String[] args) {
+
+        if (args.length < 1) {
+            System.out.println("Usage: java PatriotSimulation <interpretation>");
+            System.out.println("interpretation: 0 for standard detection, 1 for alternative detection");
+            return;
+        }
+
+        // Parse interpretation argument
+        int interpretation;
+        try {
+            interpretation = Integer.parseInt(args[0]);
+        } catch (NumberFormatException e) {
+            System.out.println("Error: interpretation must be a number");
+            return;
+        }
+
         try (BufferedReader br = new BufferedReader(new FileReader(RADAR_DATA_FILE))) {
             String line;
             int step = 1;
@@ -24,7 +39,7 @@ public class PatriotSimulation {
                 Boolean enemyDetected = null; // Use Boolean (wrapper class) for nullability
 
                 System.out.printf("Time step %d:%n", step);
-                switch (INTERPRETATION) {
+                switch (interpretation) {
                     case 0: {
                         enemyDetected = isEnemyDetected(values);
                         // Additional logic for case 0
@@ -62,13 +77,11 @@ public class PatriotSimulation {
         String concatenatedBinary = String.join("", radarOutput);
 
         // Convert the concatenated binary string to a decimal number
-
         BigInteger decimalValue = new BigInteger(concatenatedBinary, 2);
 
         // Convert the decimal number to a string representation
         String decimalString = String.valueOf(decimalValue);
 
-        // Count odd and even digits in the decimal string
         int oddCount = 0;
         int evenCount = 0;
 
@@ -81,7 +94,6 @@ public class PatriotSimulation {
             }
         }
 
-        // Return true if odd digits are more frequent than even digits
         return oddCount > evenCount;
     }
 
