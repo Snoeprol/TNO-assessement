@@ -42,16 +42,13 @@ public class PatriotSimulation {
                 switch (interpretation) {
                     case 0: {
                         enemyDetected = isEnemyDetected(values);
-                        // Additional logic for case 0
                         break;
                     }
                     case 1: {
                         enemyDetected = isEnemyDetectedAlternative(values);
-                        // Additional logic for case 1
                         break;
                     }
                     default: {
-                        // Logic for all other cases if needed
                         break;
                     }
                 }
